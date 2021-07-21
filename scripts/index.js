@@ -1,7 +1,7 @@
 const fse = require('fs-extra')
 const path = require('path')
 
-const OriginDir = path.resolve(__dirname, '../test')
+const OriginDir = path.resolve(__dirname, '../demo')
 const TargetDir = path.resolve(__dirname, '../lib/')
 const rReadPath = (file) => {
   fse.readdir(file, (err, data) => {
@@ -20,4 +20,4 @@ const rReadPath = (file) => {
     })
   })
 }
-rReadPath(OriginDir)
+// rReadPath(OriginDir)
