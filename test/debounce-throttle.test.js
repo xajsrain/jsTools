@@ -25,6 +25,6 @@ test('throttle: 测试触发时this指向是否正确',()=> {
   const cb = throttle(fn)
   const a = {name: 'a'};
   cb.call(a)
-  expect(that === a).toBe(true);
+  expect(that === a).toBeTruthy();
 })
 
