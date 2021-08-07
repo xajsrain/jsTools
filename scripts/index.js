@@ -3,6 +3,7 @@ const path = require('path')
 
 const OriginDir = path.resolve(__dirname, '../demo')
 const TargetDir = path.resolve(__dirname, '../lib/')
+console.log('i am raincool branch');
 const rReadPath = (file) => {
   fse.readdir(file, (err, data) => {
     if (!data) return
