@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>播放器demo</title>
+  <link rel="stylesheet" href="ui.css">
+</head>
+
+<body>
+  <div class="js-audio">
+    <div class="audio-wrapper">
+      <img src="./dog.png" class="img">
+      <div class="main">
+        <div class="main-top">
+          <div class="name">不要说话</div>
+          <div class="time">00:04/04:58</div>
+        </div>
+        <div class="main-bottom">
+          <div class="line">
+            <div class="line-bg"></div>
+            <div class="cursor-line">
+              <div class="dot">
+                <div class="mini-dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="play">
+        <div class="play-prev"></div>
+        <div class="play-btn play-btn-stop"></div>
+        <div class="play-next"></div>
+      </div>
+      <div class="other">
+        <div class="like">♥</div>
+        <div class="download">↓</div>
+        <div class="talk">...</div>
+        <div class="cycle cycle-circle"></div>
+        <div class="list">
+          <span class="list-line"></span>
+          <span class="list-line"></span>
+          <span class="list-line"></span>
+        </div>
+        <div class="quality">高品质</div>
+        <div class="sound">
+          <div class="sound-size">🔈</div>
+          <div class="sound-line">
+            <div class="sound-line-bg"></div>
+            <div class="sound-cursor-line">
+              <div class="dot">
+                <div class="mini-dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./core.js"></script>
+  <script>
+    const audio = createAudio(document.body);
+    console.log(audio);
+    audio.setSrc('./av/不要说话.mp3');
+    const playEle = document.querySelector('.play-btn');
+    playEle.addEventListener('click', function() {
+      if(audio.paused) {
+        audio.play();
+        playEle.className = "play-btn play-btn-start"
+      }else {
+        audio.pause();
+        playEle.className = "play-btn play-btn-stop"
+      }
+    })
+  </script>
+</body>
+
+</html>

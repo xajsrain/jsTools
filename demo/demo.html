@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="display: flex;">
+    <img src="./dog.png" id="img" alt="" style="border:1px solid">
+    <button onclick="change()">转换</button>
+    <canvas width="200" height="200" style="border:1px solid;"></canvas>
+  </div>
+  <script>
+    function change() {
+      const img = document.querySelector('img');
+      const cvs = document.querySelector('canvas');
+      const ctx = cvs.getContext('2d')
+      ctx.drawImage(img, 0, 0);
+      const imgData = ctx.getImageData(0, 0, img.width, img.height)
+      for (let i = 0; i < imgData.data.length; i+=4) {
+        const red = imgData.data[i];
+        const green = imgData.data[i + 1];
+        const blue = imgData.data[i + 2];
+        const avg = (red + green + blue) / 3;
+        imgData.data[i] = imgData.data[i+1] = imgData.data[i+2] = avg;
+      }
+      ctx.putImageData(imgData, 0, 0);
+    }
+
+    async function getImg() {
+      const res = await fetch('./dog.png');
+      const blob =await res.blob()
+    }
+    // getImg();
+  </script>
+</body>
+</html>
